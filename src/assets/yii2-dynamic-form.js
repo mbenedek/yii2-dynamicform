@@ -104,7 +104,7 @@
     };
 
     var _count = function($elem, widgetOptions) {
-        return $elem.closest('.' + widgetOptions.widgetContainer).find(widgetOptions.widgetItem).length;
+        return $('.' + widgetOptions.widgetContainer).find(widgetOptions.widgetItem).length;
     };
 
     var _createIdentifiers = function(level) {
@@ -119,18 +119,18 @@
             $newclone = $toclone.clone(false, false);
 
             if (widgetOptions.insertPosition === 'top') {
-                $elem.closest('.' + widgetOptions.widgetContainer).find(widgetOptions.widgetBody).prepend($newclone);
+                $('.' + widgetOptions.widgetContainer).find(widgetOptions.widgetBody).prepend($newclone);
             } else {
-                $elem.closest('.' + widgetOptions.widgetContainer).find(widgetOptions.widgetBody).append($newclone);
+                $('.' + widgetOptions.widgetContainer).find(widgetOptions.widgetBody).append($newclone);
             }
 
             _updateAttributes(widgetOptions);
             _restoreSpecialJs(widgetOptions);
             _fixFormValidaton(widgetOptions);
-            $elem.closest('.' + widgetOptions.widgetContainer).triggerHandler(events.afterInsert, $newclone);
+            $('.' + widgetOptions.widgetContainer).triggerHandler(events.afterInsert, $newclone);
         } else {
             // trigger a custom event for hooking
-            $elem.closest('.' + widgetOptions.widgetContainer).triggerHandler(events.limitReached, widgetOptions.limit);
+            $('.' + widgetOptions.widgetContainer).triggerHandler(events.limitReached, widgetOptions.limit);
         }
     };
 
