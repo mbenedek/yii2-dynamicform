@@ -104,7 +104,7 @@
     };
 
     var _count = function($elem, widgetOptions) {
-        return $elem.closest('.' + widgetOptions.widgetContainer).find(widgetOptions.widgetItem).length;
+        return $('.' + widgetOptions.widgetContainer).find(widgetOptions.widgetItem).length;
     };
 
     var _createIdentifiers = function(level) {
