@@ -34,7 +34,9 @@
     var methods = {
         init: function (widgetOptions) {
             return this.each(function () {
-                widgetOptions.template = _parseTemplate(widgetOptions);
+                $(function() {
+                    widgetOptions.template = _parseTemplate(widgetOptions);
+                });
             });
         },
 
