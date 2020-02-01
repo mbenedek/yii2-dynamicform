@@ -216,8 +216,12 @@ class DynamicFormWidget extends \yii\base\Widget
         $js .= "});\n";
         $view->registerJs($js, $view::POS_READY);
 
-        $js = 'jQuery("#' . $this->formId . '").yiiDynamicForm(' . $this->_hashVar .');' . "\n";
-        $view->registerJs($js, $view::POS_LOAD);
+        // REF: https://github.com/ufoproger/yii2-dynamicform/commit/f0496b2decd309b2e9c62dee8b1217c7d2ac15e1
+	    // init dynamic widget after active form initiazed
+	    $js = 'jQuery("#' . $this->formId . '").on("afterInit", function(e) {' . "\n";
+	    $js .= '    $(this).yiiDynamicForm(' . $this->_hashVar . ');' . "\n";
+	    $js .= '});' . "\n";
+	    $view->registerJs($js, $view::POS_READY);
     }
 
     /**
